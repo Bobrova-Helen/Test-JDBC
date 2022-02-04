@@ -9,9 +9,10 @@ import java.util.List;
 public class UserServiceTest {
     private final UserService userService = new UserServiceImpl();
 
-    private final String testName = "Ivan";
-    private final String testLastName = "Ivanov";
-    private final byte testAge = 5;
+    private final int testId = 1;
+    private final String testName = "Alex";
+    private final String testLastName = "alexdfghh2@mail.ru";
+    private final byte testAge = 22;
 
 
     @Test
@@ -44,7 +45,7 @@ public class UserServiceTest {
             User user = userService.getAllUsers().get(0);
 
             if (!testName.equals(user.getName())
-                    || !testLastName.equals(user.getLastName())
+                    || testName != user.getName()
                     || testAge != user.getAge()
             ) {
                 Assert.fail("User был некорректно добавлен в базу данных");
@@ -61,7 +62,7 @@ public class UserServiceTest {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
-            userService.removeUserById(1L);
+            userService.removeUserById(1);
         } catch (Exception e) {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
         }

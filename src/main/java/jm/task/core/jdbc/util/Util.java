@@ -7,9 +7,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Util {
     private static SessionFactory sessionFactory;
+    private static Connection connection;
 
     protected Util() {
     }
@@ -36,6 +39,15 @@ public class Util {
     }
 
     public static Connection getConnection() {
-        return null;
+        String URL = "jdbc:mysql://localhost:3306/mydbtest?serverTimezone=UTC";
+        String USERNAME = "root";
+        String PASSWORD = "1090159";
+
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 }
