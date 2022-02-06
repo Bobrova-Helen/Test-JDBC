@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl extends Util implements UserDao {
+public abstract class UserDaoJDBCImpl extends Util implements UserDao {
     private final Connection connection = getConnection();
 
     public UserDaoJDBCImpl() {
@@ -65,6 +65,8 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
 
     }
+
+    public abstract void removeUserById(int id);
 
     public List<User> getAllUsers() {
         List<User> allUser = new ArrayList<>();
