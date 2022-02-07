@@ -24,6 +24,9 @@ public class User {
 
     }
 
+    public User(String name, String lastName, byte age) {
+    }
+
     @Override
     public String toString() {
         return "User{" +
